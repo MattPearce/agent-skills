@@ -25,7 +25,19 @@ Use this skill for plugin work such as:
 
 ## Procedure
 
-### 0) Triage and locate plugin entrypoints
+### 0) Ecosystem & Redundancy Check
+   - [ ] **Search:** Before writing any code, search the [WordPress Plugin Directory](https://wordpress.org/plugins/) (or use `wp plugin search <keywords>`) for existing plugins that meet the user's requirements.
+   - [ ] **Evaluate:** Check if an existing plugin covers >90% of the requested functionality or solves the core problem.
+   - [ ] **Decision Gate:**
+     - **IF** a suitable plugin exists:
+       - Stop the "new plugin" workflow.
+       - Inform the user of the existing solution.
+       - Propose: "Should we extend this existing plugin via a Pull Request or hooks instead of building a new one?"
+       - If the user agrees, switch context to **refactoring/extending** that plugin.
+     - **IF** no suitable plugin exists or the user explicitly requests a custom build:
+       - Proceed with **plugin creation** context
+
+### 1) Triage and locate plugin entrypoints
 
 1. Run triage:
    - `node skills/wp-project-triage/scripts/detect_wp_project.mjs`
